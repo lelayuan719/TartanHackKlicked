@@ -6,16 +6,43 @@
   <head>
     <title>Procratination Site</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href='https://fonts.googleapis.com/css?family=Allerta Stencil' rel='stylesheet'>
-    <script defer src="js/question.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Nova Flat' rel='stylesheet'>
+    <script src=
+    "https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>
     
   </head>
 
   <body>
-    <div class = dialogue>
-        I will stare at you, do you mind? 
+    <div class = title>
+        I will stare at you, now do your work 
     </div>
+    <div class = sheep>
+      <img id = sheep1 src = "sheep/sheep.png" alt = "cute sheep">
 
+  </div>
+  <style>
+      #sheep1 {
+        height: 500px;
+        width: 500px;
+
+      }
+      </style>
+      <script>
+  let animation = anime({
+      targets: "div",
+      scale: 1.05,
+      duration: 1500,
+      easing: "linear",
+      
+      direction: "alternate",
+      keyframes: [
+
+          
+      ],
+      loop: true,
+      
+  });
+  </script>
 
 
 </html>

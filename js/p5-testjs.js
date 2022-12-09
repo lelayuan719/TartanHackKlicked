@@ -5,8 +5,8 @@ let animation = []
 
 let sheep = [] 
 
-let xLeft = 160;
-let xRight = 240;
+let xLeft = 100;
+let xRight = 300;
 let y = 180;
 
 function preload(){
@@ -35,23 +35,23 @@ function setup() {
 
 function draw() {
   background("#F1AC88");
-  fill(0);
+  // fill(0);
   
-  ellipse(xLeft, y, 25);
-  ellipse(xRight, y, 25);
+  // ellipse(xLeft, y, 30);
+  // ellipse(xRight, y, 30);
 
-  y = map(mouseY, 0, height, 170, 190, true);
-  xLeft = map(mouseX, 0, width, 150, 170, true);
-  xRight = map(mouseX, 0, width, 230, 250, true);
+  // y = map(mouseY, 0, height, 200, 200, true);
+  // xLeft = map(mouseX, 0, width, 150, 170, true);
+  // xRight = map(mouseX, 0, width, 230, 250, true);
 
   
   sheep.forEach(horse => {
   	horse.show()
   	horse.animate()
   })
-  console.log("drawCalled");
-  console.log(mouseX);
-  console.log(mouseY);
+//   console.log("drawCalled");
+//   console.log(mouseX);
+//   console.log(mouseY);
 }
 
 class Sprite {
