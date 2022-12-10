@@ -1,48 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-
-  <meta charset="UTF-8">
-
+<html>
   <head>
     <title>Procratination Site</title>
-    <link rel="stylesheet" href="css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Nova Flat' rel='stylesheet'>
-    <script src=
-    "https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>
-    
-  </head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta charset="utf-8" />
 
+  </head>
   <body>
     <div class = title>
-        I will stare at you, now do your work 
+      I will stare at you, now work!
     </div>
-    <div class = sheep>
-      <img id = sheep1 src = "sheep/sheep.png" alt = "cute sheep">
-
-  </div>
-  <style>
-      #sheep1 {
-        height: 500px;
-        width: 500px;
-
-      }
-      </style>
-      <script>
-  let animation = anime({
-      targets: "div",
-      scale: 1.05,
-      duration: 1500,
-      easing: "linear",
-      
-      direction: "alternate",
-      keyframes: [
-
-          
-      ],
-      loop: true,
-      
-  });
-  </script>
-
-
+    <script src="sketch.js"></script>
+  </body>
 </html>

@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Nova Flat' rel='stylesheet'>
     <script defer src="js/coloring.js"></script>
+    <script src=
+    "https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js">
+            </script>
     <!-- <script defer src="cart.js"></script> -->
   </head>
 
@@ -56,6 +59,22 @@
         What should I do? 
       </a>
     </div>
+    <script>
+      let animation = anime({
+          targets: "div",
+          scale: 1.02,
+          duration: 1500,
+          easing: "linear",
+          
+          direction: "alternate",
+          keyframes: [
+
+              
+          ],
+          loop: true,
+          
+      });
+      </script>
   </body>
 
 </html>

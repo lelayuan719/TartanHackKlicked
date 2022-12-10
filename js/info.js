@@ -1,3 +1,4 @@
+//creating a map for causes and strategies
 const infoMap = {
     "Perfectionism": {
         "name": "Perfectionism",
@@ -37,6 +38,7 @@ const infoMap = {
     }    
 }
 
+// Attempted to generate the blocks but failed 
 // class information {
 //     constructor(infoName, infoTitle, infoBody) {
 
@@ -87,6 +89,7 @@ const infoMap = {
 //     createElement(info);
 //   }
 
+//access local storage and assign information on map to established blocks, if cause is falser then delete corresponding block
 function retrieveFromLocalStorage() {
     const choicesString = localStorage.getItem('storedChoices');
     choices = JSON.parse(choicesString);

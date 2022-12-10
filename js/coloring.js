@@ -1,3 +1,4 @@
+//access local storage and create list
 retrieveFromLocalStorage()
 
 function retrieveFromLocalStorage() {
@@ -6,9 +7,9 @@ function retrieveFromLocalStorage() {
         return
     }
     choices = JSON.parse(choicesString);
-    console.log(choices);
 }
 
+//updating colors
 if (choices.Perfectionism == true){
     cause = document.querySelector("#cause1");
     cause.style.backgroundColor="#FC766A";
