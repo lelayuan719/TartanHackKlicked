@@ -26,6 +26,7 @@ body {
 .questionStart{
     display: flex;
     margin-left: 24%;
+    margin-right: 15%;
     margin-top: 15%;
     font-size: 60px;
   border: 7px solid #FCEDDA;
@@ -70,6 +71,8 @@ body {
 
 #optionNoStart{
   /* margin-left: 380px; */
+  /* margin-left: %; */
+  margin-right: 215%;
   margin-left: 215%;
   border: 7px solid #FCEDDA;
   border-radius: 70px;
