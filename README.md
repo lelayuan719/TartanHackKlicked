@@ -1,2 +1,2 @@
 # ProcrastinationSite
-lelayuan719.github.io/ProcrastinationSite
+https://lelayuan719.github.io/ProcrastinationSite
