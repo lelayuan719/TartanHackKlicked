@@ -100,3 +100,32 @@ button:hover {
 .button-container {
     margin-top: 20px;
 }
+
+.connect-box {
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.connect-box p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.connect-box button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.connect-box button:hover {
+    background-color: #0056b3;
+}
