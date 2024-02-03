@@ -22,12 +22,12 @@ def generate_prompt(messages, exchange_count):
 
 # TODO: quiz to AI profile
 def init_data(u_info_1_ai, u_info_2_ai):
-    client_profile = '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'
+    client_profile = 'sk-123'
 
     client_1 = OpenAI(
-        api_key="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")  # akshay key
+        api_key="sk-1233")  # akshay key
     client_2 = OpenAI(
-        api_key="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")  # akshay 2 key
+        api_key="sk-12333")  # akshay 2 key
     # Add AI profiles out here
     MODEL = "gpt-4-0613"
     user_info_1 = 'User 1 Info:\
