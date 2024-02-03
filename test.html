@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire</title>
+
+</head>
+<body>
+    <div id="questionnaire">
+        <h1>Questionnaire</h1>
+
+        <!-- Container to dynamically add questions -->
+        <div id="questionsContainer"></div>
+
+        <button onclick="submitForm()">Submit</button>
+    </div>
+
+    <script>
+        // List of questions
+        const questionsList = [
+            {
+                question: "What is your favorite color?",
+                options: ["Red", "Blue", "Green"]
+            },
+            {
+                question: "What is your favorite animal?",
+                options: ["Dog", "Cat", "Bird"]
+            },
+            {
+                question: "What is your favorite animal?",
+                options: ["Dog", "Cat", "Bird"]
+            }
+            // Add more questions here
+        ];
+
+        // Function to populate questions on the page
+        function populateQuestions() {
+            const questionsContainer = document.getElementById("questionsContainer");
+
+            questionsList.forEach((questionObj, index) => {
+                const questionDiv = document.createElement("div");
+                questionDiv.classList.add("question");
+
+                const questionText = document.createElement("p");
+                questionText.textContent = `${index + 1}. ${questionObj.question}`;
+
+                const optionsDiv = document.createElement("div");
+                optionsDiv.classList.add("options");
+
+                questionObj.options.forEach((option, optionIndex) => {
+                    const label = document.createElement("label");
+                    const input = document.createElement("input");
+                    input.type = "radio";
+                    input.name = `q${index}`;
+                    input.value = option;
+                    label.appendChild(input);
+                    label.appendChild(document.createTextNode(option));
+                    optionsDiv.appendChild(label);
+                });
+
+                questionDiv.appendChild(questionText);
+                questionDiv.appendChild(optionsDiv);
+                questionsContainer.appendChild(questionDiv);
+            });
+        }
+
+        // Call the function to populate questions on page load
+        window.onload = populateQuestions;
+
+        function submitForm() {
+            const answers = {};
+            questionsList.forEach((questionObj, index) => {
+                const options = document.getElementsByName(`q${index}`);
+                options.forEach(option => {
+                    if (option.checked) {
+                        answers[`q${index + 1}`] = option.value;
+                    }
+                });
+            });
+
+            // You can handle the answers as needed (e.g., send them to a server or display them).
+            console.log(answers);
+        }
+    </script>
+</body>
+</html>
