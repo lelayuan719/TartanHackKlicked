@@ -8,28 +8,28 @@
     <title>KlickedAI</title>
     <link rel="stylesheet" href="css/newStyle.css">
     <link rel="stylesheet" href="css/circle-bar.css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <script defer src="js/questionsGen.js"></script>
 
 </head>
   <heading>
   </heading>
   <body>
-    <div class="header pad">
-      Answer these questions to generate an AI version of you!
+    <!-- <div class="header pad">
+        Answer these questions to generate an AI version of you!
     </div>
     <div class="container">
-      <div class="left">
+      <div class="left pad">
+      </div>
         <div class="sticky pad">
-          <div class="loading">
-            <div class="wrapper">
-                <div class="loader"></div>
+              <div class="progress-bar">
+                <div id="progress"></div>
               </div>
               <div class="body text">
                 AI Persona In Creation
               </div>
           <div style="height:60vh;"></div>     
-        </div>
+        
         </div>
       </div>
       <div class="right pad">
@@ -46,6 +46,44 @@
       </div>
 
     </div>
+    <div class="footer pad">
+      Footer
+      <div style="height:30vh;"></div>
+      Footer Bottom
+    </div> -->
+
+    <div class="header pad">
+      Answer these questions to generate an AI version of you!
+    </div>
+    <div class="container">
+      <div class="left">
+        <div class="sticky pad">
+          <div class="wrapper">
+          </div>
+
+          <div class="progress-bar">
+            <div id="progress"></div>
+          </div>
+        
+          <div style="height:60vh;"></div>
+          Left Bottom
+        </div>
+      </div>
+      <div class="right pad">
+        <div id="questionsContainer"></div>
+        <div class="button-container">
+          <button class="submit-button" onclick="submitForm()">Submit</button>
+      </div>
+        <div style="height:200vh;"></div>
+        Right Bottom
+      </div>
+    </div>
+    <div class="footer pad">
+      Footer
+      <div style="height:30vh;"></div>
+      Footer Bottom
+    </div>
+
   </body>
 
 

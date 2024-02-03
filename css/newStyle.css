@@ -1,14 +1,16 @@
 body {
-    min-height: 100vh;
+    min-height: 10vh;
     margin: 0;
     display: flex;
     flex-direction: column;
     padding-top: 40px;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     
   }
   
   .header {
+    padding-left: 10%;
+    padding-top: 20%;
     font-size: 35px;
     z-index: 1000;
     position: fixed;
@@ -18,14 +20,15 @@ body {
     height: 100px;
     background-color: #f2f2f2;
   }
-  
+
+
   .container {
     display: flex;
     flex: 1 0 auto;
   }
   
   .left {
-    flex-basis: 1;
+    flex-basis: 400px;
     background-color: #f2f2f2;
   }
   
@@ -35,7 +38,6 @@ body {
   }
   
   .right {
-    padding-top: 10%;
     flex: 1;
     overflow: auto;
     background-color: #f2f2f2;
@@ -62,13 +64,13 @@ body {
 #questionnaire {
     max-width: 600px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: #ffffff;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .question {
-    background-color: blanchedalmond;
+    background-color: #ffffff;
     border-radius: 25px;
     margin-top: 4%;
     margin-left: 3%;
@@ -106,3 +108,20 @@ body {
   background-color: #45a049;
 }
 
+.progress-bar {
+  width: 100%;
+  background-color: #ddd;
+  height: 20px;
+  display: flex; /* Use flexbox */
+  justify-content: flex-start; /* Align to the left */
+  align-items: center; /* Center vertically */
+  border-radius: 30px;
+}
+
+/* Style for the progress bar itself */
+#progress {
+  width: 0;
+  height: 100%;
+  background-color: #4f6d7a; /* Change the color as desired */
+  transition: width 0.3s; /* Add a smooth transition effect */
+}

@@ -4,32 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questionnaire</title>
+    <style>
+        /* Existing styles */
 
+        /* Style for the progress bar container */
+        .progress-bar {
+            width: 100%;
+            background-color: #ddd;
+            height: 20px;
+        }
+
+        /* Style for the progress bar itself */
+        #progress {
+            width: 0;
+            height: 100%;
+            background-color: #007bff; /* Change the color as desired */
+            transition: width 0.3s; /* Add a smooth transition effect */
+        }
+    </style>
 </head>
 <body>
     <div id="questionnaire">
         <h1>Questionnaire</h1>
 
-        <!-- Container to dynamically add questions -->
         <div id="questionsContainer"></div>
+
+        <div class="progress-bar">
+            <div id="progress"></div>
+        </div>
 
         <button onclick="submitForm()">Submit</button>
     </div>
 
     <script>
+        // Dictionary to store questions and answers
+        const questionnaireData = {};
+
         // List of questions
         const questionsList = [
             {
                 question: "What is your favorite color?",
-                options: ["Red", "Blue", "Green"]
+                options: ["Red", "Blue", "Green"],
+                answer: ""
             },
             {
                 question: "What is your favorite animal?",
-                options: ["Dog", "Cat", "Bird"]
-            },
-            {
-                question: "What is your favorite animal?",
-                options: ["Dog", "Cat", "Bird"]
+                options: ["Dog", "Cat", "Bird"],
+                answer: ""
             }
             // Add more questions here
         ];
@@ -54,6 +75,7 @@
                     input.type = "radio";
                     input.name = `q${index}`;
                     input.value = option;
+                    input.addEventListener('change', updateProgress); // Add an event listener to update progress
                     label.appendChild(input);
                     label.appendChild(document.createTextNode(option));
                     optionsDiv.appendChild(label);
@@ -68,19 +90,33 @@
         // Call the function to populate questions on page load
         window.onload = populateQuestions;
 
-        function submitForm() {
-            const answers = {};
+        // Function to update the progress bar
+        function updateProgress() {
+            const progress = document.getElementById('progress');
+            const totalQuestions = questionsList.length;
+            let answeredQuestions = 0;
+
             questionsList.forEach((questionObj, index) => {
                 const options = document.getElementsByName(`q${index}`);
                 options.forEach(option => {
                     if (option.checked) {
-                        answers[`q${index + 1}`] = option.value;
+                        answeredQuestions++;
+                        questionObj.answer = option.value;
                     }
                 });
             });
 
-            // You can handle the answers as needed (e.g., send them to a server or display them).
-            console.log(answers);
+            const percentage = (answeredQuestions / totalQuestions) * 100;
+            progress.style.width = percentage + '%';
+        }
+
+        function submitForm() {
+            // Store both questions and answers in the same dictionary
+            questionnaireData.questions = questionsList.map(questionObj => questionObj.question);
+            questionnaireData.answers = questionsList.map(questionObj => questionObj.answer);
+
+            // You can now access both questions and answers in the same dictionary
+            console.log("Questionnaire Data:", questionnaireData);
         }
     </script>
 </body>
