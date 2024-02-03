@@ -1,52 +1,64 @@
-// Initialize Firebase (Make sure to replace with your Firebase config)
-import { getFirestore } from "firebase/firestore";
-import { doc, getDoc } from "firebase/firestore";
-import { initializeApp } from "firebase/app";
-
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://support.google.com/firebase/answer/7015592
-const firebaseConfig = {
-  type: "service_account",
-  project_id: "klicked-c967c",
-  private_key_id: "1ff14227b761b1ed0ba50a606b9f82d97fb5fe69",
-  private_key:
-    "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDMhPFOCbYhfly1\nMOJJ3X1ied5s5eKtanDogWgCGT6YdSzBIJF7NcX4D3bP1OIpnmQPDQZznMhd4SGH\nP9FIJQV2WeRVIlTqeblqmCLDRu6pE6hy4L3EstxMeN+Sal5KLTvYz7Eo1MWsKI6V\nN87MBOEgJpCloWwx9AckQ2JZpxBK4Rfc0HaH5GVimJPN55bBoAPR40RDpzqWtaGo\nkWEIwaqCZOkNKa6fZUDJi5XTSy7Uk2HbZigywlyufXmb5HsU72hUtu6G7aAXzL/7\nWxHfr7Lxrwvkh0uqEqjTAqLHMU/C1sy9cdBhwUl6pUCPuR8UCiGieM/OgeJ917er\nIl3zyrhNAgMBAAECggEAG7ry1PfwH/54J4EnTYiglZeclvtcjtLd2Eijh5VQrW9F\n0DHQR/p0izvdijR9LdNyEbBcbZSWflQmLaZzg+qxIOjzUq/C/7/dahySqhOWDIrD\nzj+2u1LdF+lTtxCBFGGpua3/gV/IJZ2iJ41XlsYamDdiaXLHrsY9qacRUMKcLOq2\nMdKLiuIiKqnVxpruhnUt3WiZzcNh+2hLsFNk4p/hnZ9ATzcaSkKcIcJ7qUKfVKoO\nIL5rfRX7p4TFV+8uF8jNVKApBPoJpJN5Ii/rBZhOi/uSwYkDyAWD0EFtJIuiA+ig\n5y+4h5e06Eb8Lbqwn+JMBSKVcQZFlmqremDt8FIdwQKBgQDsmk425MiDwNSIVw15\n2RJUaYXawohsZT8y8ZmVPH4fBygbVbl2tp3VigqJhrzKms3D8KXDfCdtHOK844jh\nOf39nI1F1MohcIVSnaPCUcsoURtlUUd4imqRlNMgTAf3is33cynDQbafGkNLNzvP\nimPYHoUJ9kxEkPxO8XcRsbPTBQKBgQDdSUlW7nvJSzjwxiwv4e+R8pQsMARAI+oK\nq7N7plQh0q2B/fsJQaijpWn1qYtvmNxLuswGlBtYvL+lXT9d9ivApTiI6klVF7f3\nBul2Ov+tBG0ynUgVeHejYNYaTqhR859eFRTWHnqpdH6jrem9K2qY0K7YHvk2/5Nj\ngmaqMsLiqQKBgQCqyshi/8tusCe7M3va1UNSA8pIG9z2wi9YyuYewEgahcQB12PF\nuhU9LCRnGgf2CME4C+LctiaPsSZLS8RnMMGT7Qpdujke4mabOIgZoYmRVNr9zCpX\nbTN4W4H78mZd3qjHUy52cF0vhHnHNdvK+Q8R1xYaFtz/Mdmv8sYM08YHMQKBgQCa\nqvG++Du/S3uGFw2lficD/OiCJiGibzfTs4VlBLHDXkz2Ef6XzrO/hguUsKeMHezE\nZdDbPEQM9wiA3bc/xqN4KENmt1MATe7Ak600fTJdzT1B5lsO3r/IixO7GYVemoim\nqteAfZdAv/MQFqvME/+SxjGfT67jOSncoLV/erFq2QKBgFTLiuwYM6iRfIKft+GG\nuloRErs4LpJQa1HQw6cohNeM2MmCxIVubq79xpjMxqh1o9r9oLRipdN28cLKEmQv\nqKpFLoltgicrmiSf/Y8+5o7A6sKwkY2stO6qjUouZvdN9kL11BwNsSLc0bebPTRY\nRtaVX60tg+hVazfDUG1QaBmw\n-----END PRIVATE KEY-----\n",
-  client_email: "firebase-adminsdk-cfue9@klicked-c967c.iam.gserviceaccount.com",
-  client_id: "112901178499606046270",
-  auth_uri: "https://accounts.google.com/o/oauth2/auth",
-  token_uri: "https://oauth2.googleapis.com/token",
-  auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
-  client_x509_cert_url:
-    "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-cfue9%40klicked-c967c.iam.gserviceaccount.com",
-  universe_domain: "googleapis.com",
-};
-
-firebase.initializeApp(firebaseConfig);
-
-const db = getFirestore();
-
-const docRef = doc(db, "users_conversation", "8BwN6PHIgt3ZGr2VDcrP");
-
-getDoc(docRef)
-  .then((docSnap) => {
-    if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
-    } else {
-      console.log("No such document!");
+let final_convo = [];
+ai_convo = fetch("http://127.0.0.1:5000/get-conversation")
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
+    return response.json();
+  })
+  .then((data) => {
+    console.log("Document data:", data);
+    final_convo = data.map((item) => ({
+      user: item.role, // Adjust these field names based on your actual data structure
+      message: item.content,
+    }));
   })
   .catch((error) => {
-    console.log("Error getting document:", error);
+    console.error("Error fetching data:", error);
   });
-
-// Sample conversation data
+console.log(final_convo);
 const conversationData = [
-  { user: "User 1", message: "Hello there!" },
-  { user: "User 2", message: "Hi! How can I help you?" },
-  { user: "User 1", message: "I have a question about your product." },
-  // Add more messages here...
+  {
+    user: "User 1",
+    message:
+      "That's impressive, User 2! I see you're into creating 3D models and animations. I've worked on some tech projects myself, mainly in Python and Java. Have you ever used these languages in your work? Also, I'm curious about the UIST Conference. What was your experience like?",
+  },
+  {
+    user: "User 2",
+    message:
+      "Yes, I've used Python for some of my projects, especially when dealing with data manipulation for 3D modeling. The UIST Conference was a great experience, I got to present my work and connect with other innovators. It seems like we both enjoy creating and innovating. Have you ever considered using your skills in Python and AWS for 3D modeling or animation?",
+  },
+  {
+    user: "User 1",
+    message:
+      "That's great! I've not yet explored 3D modeling or animation with Python and AWS, but it sounds intriguing. I've mostly used Python for data science projects and AWS for cloud-based solutions. However, I'm always open to learning and applying my skills in new areas. It's fascinating how our fields can intersect. Have you ever incorporated elements of IoT in your work?",
+  },
+  {
+    user: "User 2",
+    message:
+      "I haven't had the chance to work directly with IoT, but I see its potential, especially in the context of robotic materials. Your experience with IoT could be valuable in exploring how these materials could interact with other devices or systems. It's exciting to think about the possibilities. Do you see any potential applications of your IoT experience in the context of robotic materials?",
+  },
+  {
+    user: "User 1",
+    message:
+      "Absolutely, the intersection of IoT and robotic materials could open up a world of possibilities. For instance, IoT could enable real-time data collection from robotic materials, allowing for dynamic adjustments based on environmental conditions. This could be particularly useful in industries like construction or manufacturing. It's indeed exciting to think about the potential applications. It seems we have a lot to learn from each other's experiences.",
+  },
+  {
+    user: "User 2",
+    message:
+      "I completely agree. Your insights into IoT could greatly enhance the functionality and adaptability of robotic materials. And your experience with data science could help in analyzing the data collected. This could lead to more efficient and intelligent systems. I'm excited about the potential of our combined skills. Let's definitely keep this conversation going.",
+  },
+  {
+    user: "User 1",
+    message:
+      "Absolutely, User 2! The combination of our skills could indeed lead to some innovative solutions. I'm also excited about the potential of our collaboration. Your work with robotic materials and 3D modeling could provide a unique perspective to my experience with IoT and data science. I look forward to our future discussions and potential collaborations.",
+  },
+  {
+    user: "User 2",
+    message:
+      "I'm equally excited, User 1! Your experience with IoT, data science, and cloud solutions could bring a fresh perspective to my work with robotic materials and 3D modeling. I believe",
+  },
 ];
-
 // Function to create and append chat bubbles
 function appendMessage(user, message) {
   const chatContainer = document.getElementById("chat-container");
