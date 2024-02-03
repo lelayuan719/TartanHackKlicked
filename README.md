@@ -1,5 +1,5 @@
 # ProcrastinationSite
-https://lelayuan719.github.io/ProcrastinationSite
+https://lelayuan719.github.io/TartanHackKlicked
 
 # Added Feb 2024 TartanHacks
 - created files to receive quiz output from procrastinationSite
