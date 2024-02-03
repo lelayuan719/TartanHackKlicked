@@ -15,9 +15,37 @@ function appendMessage(user, message) {
     chatContainer.appendChild(messageDiv);
 }
 
+// Function to add the "Connect" or "Schedule a Meeting" box
+function addConnectBox() {
+    const chatContainer = document.getElementById("chat-container");
+    const connectBox = document.createElement("div");
+    connectBox.className = "connect-box";
+    connectBox.innerHTML = `
+        <p>Do you want to connect and talk to this person more?</p>
+        <button id="connect-button">Connect</button>
+        <button id="schedule-button">Schedule a Meeting</button>
+    `;
+    chatContainer.appendChild(connectBox);
+
+    // Attach event listeners for the "Connect" and "Schedule a Meeting" buttons
+    const connectButton = document.getElementById("connect-button");
+    const scheduleButton = document.getElementById("schedule-button");
+
+    connectButton.addEventListener("click", () => {
+        alert("Connecting..."); // Replace this with your logic for connecting
+    });
+
+    scheduleButton.addEventListener("click", () => {
+        alert("Scheduling a meeting..."); // Replace this with your logic for scheduling a meeting
+    });
+}
+
 // Populate the chat with the conversation data
 window.onload = function () {
     for (const { user, message } of conversationData) {
         appendMessage(user, message);
     }
+    
+    // Add the "Connect" or "Schedule a Meeting" box at the end
+    addConnectBox();
 };
